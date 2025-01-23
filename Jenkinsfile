@@ -3,11 +3,39 @@ pipeline {
     tools{
         maven 'maven_3_8_4'
     }
+    environment {
+        OPENAI_API_KEY = credentials('openai-api-key')
+    }
     stages{
+        stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                // Using python3 or python might depend on how your environment variables are set up
+                sh 'python3 -m pip install -r requirements.txt'
+            }
+        }
         stage('Build Maven'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ankit03jangra/devops-automation']]])
                 sh 'mvn clean install'
+            }
+        }
+        stage('AI Feedback'){
+            steps{
+                script {
+                    sh 'python3 ai_feedback.py'
+                }
+            }
+        }
+        stage('Post Comment to PR') {
+            steps {
+                script {
+                    sh 'python3 post_comments_to_pr.py'
+                }
             }
         }
         stage('Build docker image'){
@@ -28,4 +56,12 @@ pipeline {
             }
         }
     }
+    post {
+            success {
+                echo 'Workflow completed successfully.'
+            }
+            failure {
+                echo 'Workflow failed.'
+            }
+        }
 }
