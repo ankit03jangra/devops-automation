@@ -12,12 +12,11 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Install Dependencies') {
+        /* stage('Install Dependencies') {
             steps {
-                // Using python3 or python might depend on how your environment variables are set up
                 sh 'C:/Users/Ankit_Jangra/AppData/Local/Programs/Python/Python312/python.exe -m pip install -r requirements.txt'
             }
-        }
+        } */
         stage('Build Maven'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ankit03jangra/devops-automation']]])
