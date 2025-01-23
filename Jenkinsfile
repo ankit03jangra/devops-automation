@@ -15,7 +15,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Using python3 or python might depend on how your environment variables are set up
-                sh 'python -m pip install -r requirements.txt'
+                sh 'C:/Users/Ankit_Jangra/AppData/Local/Programs/Python/Python312/python.exe -m pip install -r requirements.txt'
             }
         }
         stage('Build Maven'){
@@ -27,14 +27,14 @@ pipeline {
         stage('AI Feedback'){
             steps{
                 script {
-                    sh 'python ai_feedback.py'
+                    sh 'C:/Users/Ankit_Jangra/AppData/Local/Programs/Python/Python312/python.exe ai_feedback.py'
                 }
             }
         }
         stage('Post Comment to PR') {
             steps {
                 script {
-                    sh 'python post_comments_to_pr.py'
+                    sh 'C:/Users/Ankit_Jangra/AppData/Local/Programs/Python/Python312/python.exe post_comments_to_pr.py'
                 }
             }
         }
