@@ -15,7 +15,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 // Using python3 or python might depend on how your environment variables are set up
-                sh 'python3 -m pip install -r requirements.txt'
+                sh 'python -m pip install -r requirements.txt'
             }
         }
         stage('Build Maven'){
@@ -27,14 +27,14 @@ pipeline {
         stage('AI Feedback'){
             steps{
                 script {
-                    sh 'python3 ai_feedback.py'
+                    sh 'python ai_feedback.py'
                 }
             }
         }
         stage('Post Comment to PR') {
             steps {
                 script {
-                    sh 'python3 post_comments_to_pr.py'
+                    sh 'python post_comments_to_pr.py'
                 }
             }
         }
