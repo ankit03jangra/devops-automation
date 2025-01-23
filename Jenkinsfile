@@ -26,14 +26,14 @@ pipeline {
         stage('AI Feedback'){
             steps{
                 script {
-                    sh 'C:/Users/Ankit_Jangra/AppData/Local/Programs/Python/Python312/python.exe ai_feedback.py'
+                    sh 'C:/Users/Ankit_Jangra/AppData/Local/Programs/Python/Python312/python.exe scripts/ai_feedback.py'
                 }
             }
         }
         stage('Post Comment to PR') {
             steps {
                 script {
-                    sh 'C:/Users/Ankit_Jangra/AppData/Local/Programs/Python/Python312/python.exe post_comments_to_pr.py'
+                    sh 'C:/Users/Ankit_Jangra/AppData/Local/Programs/Python/Python312/python.exe scripts/post_comments_to_pr.py'
                 }
             }
         }
