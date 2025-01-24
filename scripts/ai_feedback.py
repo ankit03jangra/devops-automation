@@ -1,7 +1,7 @@
 from openai import OpenAI
+import os
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-import os
 
 # Replace with your OpenAI API key
 def analyze_code(file_path):
