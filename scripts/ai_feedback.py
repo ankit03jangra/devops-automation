@@ -8,7 +8,7 @@ def analyze_code(file_path):
     with open(file_path, 'r') as file:
         code = file.read()
 
-    response = openai.ChatCompletion.create(
+    response = openai.Completion.create(
         model="gpt-3.5-turbo",
         messages=[
                     {"role": "system", "content": "You are an expert code reviewer."},
