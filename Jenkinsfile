@@ -7,12 +7,12 @@ pipeline {
         OPENAI_API_KEY = credentials('openai-api-key')
     }
     stages{
-        stage('Build Maven'){
+        /* stage('Build Maven'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ankit03jangra/devops-automation']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*//* main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ankit03jangra/devops-automation']]])
                 sh 'mvn clean install'
             }
-        }
+        } */
         stage('AI Feedback'){
             steps{
                 script {
