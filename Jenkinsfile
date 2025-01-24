@@ -7,16 +7,6 @@ pipeline {
         OPENAI_API_KEY = credentials('openai-api-key')
     }
     stages{
-        stage('Checkout Code') {
-            steps {
-                checkout scm
-            }
-        }
-        /* stage('Install Dependencies') {
-            steps {
-                sh 'C:/Users/Ankit_Jangra/AppData/Local/Programs/Python/Python312/python.exe -m pip install -r requirements.txt'
-            }
-        } */
         stage('Build Maven'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ankit03jangra/devops-automation']]])
