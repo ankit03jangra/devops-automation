@@ -17,11 +17,11 @@ def analyze_code(file_path):
         max_tokens=150,
         temperature=0.7)
         return response.choices[0].message.content.strip()
-    except openai.error.RateLimitError:
+    except client.error.RateLimitError:
         print("Rate limit exceeded. Retrying...")
         time.sleep(60)  # Retry after 60 seconds (you can adjust the wait time)
         return analyze_code(file_path)  # Retry the function after delay
-    except openai.error.AuthenticationError:
+    except client.error.AuthenticationError:
         print("Invalid API key. Please check your key and try again.")
     except Exception as e:
         print(f"An error occurred: {e}")
