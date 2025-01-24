@@ -12,8 +12,8 @@ headers = {
 
 def post_comment(comment):
     url = f"https://api.github.com/repos/{REPO}/issues/{PR_NUMBER}/comments"
-    print(url)
     payload = {"body": comment}
+    print(url)
     response = requests.post(url, headers=headers, json=payload)
     if response.status_code == 201:
         print("Comment posted successfully.")
