@@ -8,7 +8,7 @@ def analyze_code(file_path):
     with open(file_path, 'r') as file:
         code = file.read()
 
-    response = client.chat.completions.create(model="gpt-4",
+    response = client.chat.completions.create(model="gpt-3.5-turbo",
     messages=[
                 {"role": "system", "content": "You are an expert code reviewer."},
                 {"role": "user", "content": f"Analyze the following code and provide feedback:\n\n{code}"}
