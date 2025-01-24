@@ -1,14 +1,14 @@
-import openai
+from openai import OpenAI
 import os
 
 # Replace with your OpenAI API key
 openai.api_key = os.getenv("OPENAI_API_KEY")
-
+client = OpenAI()
 def analyze_code(file_path):
     with open(file_path, 'r') as file:
         code = file.read()
 
-    response = openai.Completions.create(
+    response = client.completions.create(
         model="gpt-3.5-turbo",
         messages=[
                     {"role": "system", "content": "You are an expert code reviewer."},
