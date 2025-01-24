@@ -3,7 +3,7 @@ import os
 
 GITHUB_TOKEN = os.getenv("your-github-token")
 REPO = "ankit03jangra/devops-automation"
-PR_NUMBER = 1  # Replace with the pull request number
+PR_NUMBER = 2  # Replace with the pull request number
 
 headers = {
     "Authorization": f"Bearer {GITHUB_TOKEN}",
